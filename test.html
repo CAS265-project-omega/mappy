@@ -5,10 +5,24 @@
     <title>Testing geoLocation</title>
 </head>
 <body>
+<input type="text" id="origin" name="origin">
+<input type="text" id="originState" name="originState">
 
+<br>
+<h3>Destination</h3>
+<input type="text" id="destination" name="destination">
+<input type="text" id="destinationState" name="destinationState">
+
+<input type="time" id="arrival" name="arrival">
+<select name="transit" id="transit">
+    <option value="transitSelection">Transit Selection</option>
+    <option value="Car">Car</option>
+    <option value="Bus">Bus</option>
+</select>
+<input type="submit" id="submit" value="Find Timing">
 <section>
     <article>
-        <div class="countDownClockView"></div>
+        <div id="countdownClockView"></div>
     </article>
 </section>
 <script src="includes/lib/jquery/jquery.min.js"></script>
