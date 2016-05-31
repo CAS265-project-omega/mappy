@@ -4,24 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <title>Gots to GO!</title>
+
+    <link rel="stylesheet" href="includes/lib/fontAwesome/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/helper.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="includes/css/reset.css">
+    <link rel="stylesheet" href="includes/css/helper.css">
+    <link rel="stylesheet" href="includes/css/grid.css">
+    <link rel="stylesheet" href="includes/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Gots to Go!</h1>
+    <!--<header>-->
+        <!--<h1>Gots to Go!</h1>-->
+    <!--</header>-->
+    <section>
+        <main>
+            <article>
+                <form action="post">
+                    <label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting point: </label>
+                    <input id="origin" type="text" name="origin" class="txtinput">
+                    <button>Use my location</button>
+
+                    <label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination point:</label>
+                    <input id="destination" type="text" name="destination" class="txtinput">
+
+                    <label><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Desired arrival time: </label>
+                    <input id="arrival" type="time" name="arrival" class="txtinput">
+
+                    <select  id="transit" name="dropdown" style="font-family:'FontAwesome', Areal;">
+                        <option>Transit selection</option>
+                        <option>&#xf1b9; &nbsp;Car</option>
+                        <option>&#xf207; &nbsp;Bus</option>
+                    </select>
+                    <input type="submit" value="Submit" id="submit">
+                </form>
+            </article>
+        </main>
+    </section>
+
     
-    </header>
-    
-    <main></main>
-    
-    <footer>
-        <p> Mel rebum dolorem ad, ex magna regione his. Sit enim omittam definitionem ea, sumo novum tincidunt id eos. Convenire scribentur ius id, qui eu magna explicari. Ut ancillae albucius ius, no iisque debitis evertitur nec. Ei elaboraret dissentiunt duo, omnis.</p>
-    
-    </footer>
+    <!--<footer>-->
+        <!--<p> Mel rebum dolorem ad, ex magna regione his. Sit enim omittam definitionem ea, sumo novum tincidunt id eos. Convenire scribentur ius id, qui eu magna explicari. Ut ancillae albucius ius, no iisque debitis evertitur nec. Ei elaboraret dissentiunt duo, omnis.</p>-->
+    <!---->
+    <!--</footer>-->
 
 </body>
 </html>
