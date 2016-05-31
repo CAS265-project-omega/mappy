@@ -125,7 +125,7 @@ $(function() {
                         } // end updateClock()
 
                         // Start the clock up
-                        updateClock();
+                        // updateClock();
                         // var timeInterval = setInterval(updateClock, 1000);
 
                         // Date.setHours(hour,min,sec,millisec)
