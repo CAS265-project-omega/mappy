@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <title>fORM</title>
+</head>
+
+<body>
+
+<form action="post">
+<label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting point: </label><input id="origin" type="text" name="origin" class="txtinput"><button>Use my location</button>
+
+<label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination point:</label> <input id="destination" type="text" name="destination" class="txtinput">
+
+<label><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Desired arriver time: </label><input id="arrival" type="text" name="arrival" class="txtinput">
+
+<select  id="transit" name="dropdown" style="font-family:'FontAwesome',Areal;">
+<option>Transit selection</option> 
+<option>&#xf1b9; &nbsp;Car</option>
+<option>&#xf207; &nbsp;Bus</option>
+</select>
+<input type="submit" value="Submit" id="submit">
+    
+</form>
+
+</body>
+</html>
