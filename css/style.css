@@ -1,0 +1,48 @@
+/* 
+
+Color Palette
+
+#558C89 Blueish Green
+#74AFAD Light Blueish Green
+#D9853B Light Orange
+#ECECEA Light Grey
+
+Fonts:
+font-family: 'Montserrat', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
+
+*/
+
+header, main, footer {
+    padding: 1em;
+}
+
+/* header height is temporary until content is added */
+header {
+    height: 100px;
+    background-color: #74AFAD;
+}
+
+main {
+    height: 300px;
+    background-color: #ECECEA;
+}
+
+footer {
+    background-color: #74AFAD;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.25em;
+    font-style: bold;
+    text-align: center;
+    background-color: #558C89;
+    color: #fff;
+    padding: .25em 0;
+    border-radius: 25px;
+}
+
+p {
+    font-family: 'Source Sans Pro', sans-serif;
+}
