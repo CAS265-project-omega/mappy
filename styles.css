@@ -1,0 +1,76 @@
+/*color pallete
+#558C89
+#74AFAD
+#D9853B
+#ECECEA*/
+
+form {
+  width: 80%;
+  height: 13em;
+  padding: 1em .5em;
+  margin: 3em auto;
+  background-color:#ECECEA;
+  font-size: 2em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  
+}
+
+input,
+button,
+select {
+  background-color: #74AFAD;
+  padding: .3em;
+  font-size: .9em;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear:left;
+    width: 33%;
+    text-align: left;
+    margin: .5em 0 0 .4em;
+}
+
+ .txtinput {
+  display: block;
+  float: right;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dedede;
+  width: 46%;
+  color: #777;
+  margin-bottom: .5em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+}
+.txtinput:focus {
+  color: #333;
+  border-color: #D9853B;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+  outline: 0 none;
+}
+
+select{
+    margin: 1em;
+    float:left;
+    clear: both;
+}
+button{
+  background-color: #74AFAD;
+  padding: .6em 0;
+  font-size: .6em;
+  float: left;
+  width: 15%;
+}
+#submit{
+    background-color: #D9853B;
+    width: 38%;
+    font-size: .5em;
+    padding: .8em;
+    float:left;
+    clear: both;
+    
+}
