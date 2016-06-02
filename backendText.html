@@ -3,8 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
+  <script src="includes/lib/jquery/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      var arrivalTime = "13:30";
+      var time = arrivalTime.split(":");
+      var date = new Date();
+      var arrivalSeconds = new Date(date.getFullYear(), date.getMonth(), date.getDay(), time[0], time[1]).getTime() / 1000;
+      $.post("includes/php/mapi.php",{
+        locationsObject: {
+          origin: {
+            stringOriginLocation: "7034 N Denver Ave, Portland",
+            stringOriginState: "OR"
+          },
+          destination: {
+            stringDestinationLocation: "17705 NW Springville Rd, Portland",
+            stringDestinationState: "OR"
+
+          },
+          arrivalTransit: {
+            stringArrivalLocation: arrivalSeconds,
+            stringTransitLocation: "car"
+          }
+        }
+      }, function(response){
+        console.log(response);
+      });
+
+    });
+  </script>
 </head>
 <body>
-
+  Check your console
 </body>
 </html>

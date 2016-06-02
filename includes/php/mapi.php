@@ -25,7 +25,7 @@ switch($mode){
 $units = "imperial";
 $arrivalTime = $locations["arrivalTransit"]["stringArrivalLocation"];
 
-$traffic = "pessimistic";
+// $traffic = "pessimistic";
 
 $getUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?";
 
@@ -34,12 +34,13 @@ $getUrl .= "destinations=".$destination."&";
 $getUrl .= "mode=".$transit."&";
 $getUrl .= "units=".$units."&";
 $getUrl .= "arrival_time=".intval($arrivalTime)."&";
-$getUrl .= "traffic_model=".$traffic;
+// $getUrl .= "traffic_model=".$traffic."&";
+$getUrl .= "key=".$key;
 
 $curl = curl_init();
 curl_setopt_array($curl, [
   CURLOPT_RETURNTRANSFER => 1,
-  CURLOPT_URL => $getUrl
+  CURLOPT_URL => str_replace(" ", "%20", $getUrl)
 ]);
 
 $resp = curl_exec($curl);
@@ -47,4 +48,4 @@ curl_close($curl);
 
 $response = json_decode($resp);
 
-print_r(json_encode($response["rows"]["elements"]["duration"]));
+print_r($response->rows[0]->elements[0]->duration);
