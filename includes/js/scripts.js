@@ -76,24 +76,32 @@ $(function() {
             success: function(response) {
                 // This needs to build the DOM with countDown Ticker
                 var buildCountdownTicker = {
-                    getRemainingTime: function(endTime) {
+                    getRemainingTime: function(deadline) {
                         // var endTime = '2016-31-5T06:00';
-                        var endTime = Number(1464701422815 + 701422815);
+                        // var endTime = Number(1464701422815 + 111422815);
+                        // deadline = 1464742107000;
+                        var endTime = new Date();
+                        var endTimeMilliseconds = endTime.setTime(deadline);
                         // var testingDate = Date.parse(endTime);
                         // var testingDate = new Date();
-                        var mili = Date.now();
-                        var arrivalTime = endTime - mili;
+                        var now = new Date();
+                        var currentTime = now.getTime();
+                        console.log('Current Time');
+                        console.log(currentTime);
 
+                        var arrivalTime = endTimeMilliseconds - currentTime;
+                        console.log('arrivalTime');
                         console.log(arrivalTime);
                         // console.log(mili);
                         // var newDate = new Date(endTime);
-                        // var time = Date.parse(endtime) - Date.parse(new Date());
+                        // var time = Date.parse(endTime) - Date.parse(now);
                         var time = arrivalTime;
                         var seconds = Math.floor((time / 1000) % 60);
                         var minutes = Math.floor((time / 1000 / 60) % 60);
                         var hours = Math.floor((time / 1000 * 60 * 60) % 24);
                         var days = Math.floor((time / 1000 * 60 * 60 * 24) % 24);
 
+                        console.log(seconds);
                         return {
                             'total': time,
                             'seconds': seconds,
@@ -125,8 +133,8 @@ $(function() {
                         } // end updateClock()
 
                         // Start the clock up
-                        // updateClock();
-                        // var timeInterval = setInterval(updateClock, 1000);
+                        updateClock();
+                        var timeInterval = setInterval(updateClock, 1000);
 
                         // Date.setHours(hour,min,sec,millisec)
                         // var setDate = new Date.setHours();
@@ -135,7 +143,7 @@ $(function() {
                 };
                 console.log(response);
                 // var deadline = new(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-                buildCountdownTicker.initializeClock();
+                buildCountdownTicker.initializeClock(1464742107000);
             }, // end success
             error: function(error) {
                 console.log('error');
