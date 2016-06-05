@@ -152,3 +152,7 @@ pip-log.txt
 *.ai
 *.psd
 *.pem
+
+# API Key File - Add manually
+#-------------------------------------
+includes/php/api.php
