@@ -1,33 +1,30 @@
 <?php
-//require_once ("api.php");
-$key = 'AIzaSyCnsyUtLfuCW-PzpoFgqyFN1aFIuzeaac';
+require_once ("api.php");
 $locations = $_POST["locationsObject"];
-
-$origin = ($locations["origin"]["latitude"]) ? $locations["origin"]["latitude"] . "," .$locations["origin"]["longitude"] : $locations["origin"]["stringOriginLocation"] . "," . $locations["origin"]["stringOriginState"];
+$origin = ($locations["origin"]["latitude"]) ?
+    $locations["origin"]["latitude"] . "," .$locations["origin"]["longitude"]:
+    $locations["origin"]["stringOriginLocation"] . "," . $locations["origin"]["stringOriginState"];
 
 $destination = $locations["destination"]["stringDestinationLocation"] . $locations["destination"]["stringDestinationState"];
 
 $mode = $locations["arrivalTransit"]["stringTransitLocation"];
 $transit = "";
 switch($mode){
-  case "car":
-    $transit = "driving";
-    break;
-  case "bus":
-    $transit = "transit";
-    break;
-  default:
-    print_r ("I don't know how to handle ".$mode);
-    break;
+    case "car":
+        $transit = "driving";
+        break;
+    case "bus":
+        $transit = "transit";
+        break;
+    default:
+        print_r ("I don't know how to handle ".$mode);
+        break;
 }
-
 $units = "imperial";
 $arrivalTime = $locations["arrivalTransit"]["stringArrivalLocation"];
 
 // $traffic = "pessimistic";
-
 $getUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?";
-
 $getUrl .= "origins=".$origin ."&";
 $getUrl .= "destinations=".$destination."&";
 $getUrl .= "mode=".$transit."&";
@@ -38,8 +35,8 @@ $getUrl .= "key=".$key;
 
 $curl = curl_init();
 curl_setopt_array($curl, [
-  CURLOPT_RETURNTRANSFER => 1,
-  CURLOPT_URL => str_replace(" ", "%20", $getUrl)
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => str_replace(" ", "%20", $getUrl)
 ]);
 
 $resp = curl_exec($curl);
