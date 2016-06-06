@@ -74,6 +74,7 @@ $(function() {
     });
 
     var sendLocationsObject = function(locations) {
+        console.log(locations);
         var _second = 1000;
         var _minute = _second * 60;
         var _hour = _minute * 60;
