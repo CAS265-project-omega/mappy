@@ -1,10 +1,9 @@
 <?php
-require_once ("api.php");
+//require_once ("api.php");
+$key = 'AIzaSyCnsyUtLfuCW-PzpoFgqyFN1aFIuzeaac';
 $locations = $_POST["locationsObject"];
 
-$origin = ($locations["origin"]["latitude"]) ?
-  $locations["origin"]["latitude"] . "," .$locations["origin"]["longitude"]:
-  $locations["origin"]["stringOriginLocation"] . "," . $locations["origin"]["stringOriginState"];
+$origin = ($locations["origin"]["latitude"]) ? $locations["origin"]["latitude"] . "," .$locations["origin"]["longitude"] : $locations["origin"]["stringOriginLocation"] . "," . $locations["origin"]["stringOriginState"];
 
 $destination = $locations["destination"]["stringDestinationLocation"] . $locations["destination"]["stringDestinationState"];
 

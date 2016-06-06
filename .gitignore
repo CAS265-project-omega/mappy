@@ -49,6 +49,8 @@ jspm_packages
 .idea/jsLibraryMappings.xml
 
 bower_components/
+assets/
+
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml

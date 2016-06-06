@@ -6,12 +6,12 @@
   <script src="includes/lib/jquery/jquery.min.js"></script>
 
   <script>
-    $(function(){
+    $(function() {
       var arrivalTime = "13:30";
       var time = arrivalTime.split(":");
       var date = new Date();
       var arrivalSeconds = new Date(date.getFullYear(), date.getMonth(), date.getDay(), time[0], time[1]).getTime() / 1000;
-      $.post("includes/php/mapi.php",{
+      $.post("includes/php/mapi.php", {
         locationsObject: {
           origin: {
             stringOriginLocation: "7034 N Denver Ave, Portland",
@@ -28,9 +28,8 @@
           }
         }
       }, function(response){
-        console.log(response);
+          console.log(response);
       });
-
     });
   </script>
 </head>

@@ -67,7 +67,12 @@ $(function() {
     geoLocationFunctions.checkScreenSize();
 
     var sendLocationsObject = function(locations) {
-        // console.log(locations);
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour *24;
+        var timer;
+
         $.ajax({
             url: 'includes/php/testAJAX.php',
             method: 'POST',
@@ -75,75 +80,50 @@ $(function() {
             dataType: 'json',
             success: function(response) {
                 // This needs to build the DOM with countDown Ticker
-                var buildCountdownTicker = {
-                    getRemainingTime: function(deadline) {
-                        // var endTime = '2016-31-5T06:00';
-                        // var endTime = Number(1464701422815 + 111422815);
-                        // deadline = 1464742107000;
-                        var endTime = new Date();
-                        var endTimeMilliseconds = endTime.setTime(deadline);
-                        // var testingDate = Date.parse(endTime);
-                        // var testingDate = new Date();
-                        var now = new Date();
-                        var currentTime = now.getTime();
-                        console.log('Current Time');
-                        console.log(currentTime);
+                var buildTimer = {
+                    initializeClock: function(timeToLeave) {
+                        console.log(timeToLeave + ' Time to Leave');
+                        console.log(Date.now() + ' Now');
+                        // 1465195800000
+                        // 1464763793100
+                        var countdownToLeave = timeToLeave - Date.now();
+                        console.log('distance: ' + countdownToLeave);
+                        if (countdownToLeave < 0) {
+                            // handle expiry here..
+                            clearInterval(timer); // stop the timer from continuing ..
+                            alert('Expired'); // alert a message that the timer has expired..
 
-                        var arrivalTime = endTimeMilliseconds - currentTime;
-                        console.log('arrivalTime');
-                        console.log(arrivalTime);
-                        // console.log(mili);
-                        // var newDate = new Date(endTime);
-                        // var time = Date.parse(endTime) - Date.parse(now);
-                        var time = arrivalTime;
-                        var seconds = Math.floor((time / 1000) % 60);
-                        var minutes = Math.floor((time / 1000 / 60) % 60);
-                        var hours = Math.floor((time / 1000 * 60 * 60) % 24);
-                        var days = Math.floor((time / 1000 * 60 * 60 * 24) % 24);
-
-                        console.log(seconds);
-                        return {
-                            'total': time,
-                            'seconds': seconds,
-                            'minutes': minutes,
-                            'hours': hours,
-                            'days': days
+                            return; // break out of the function so that we do not update the counters with negative values..
                         }
-                    }, // getRemainingTime()
-                    initializeClock: function(endTime) {
-                        // endTime will be an object from response
-                        // var endTime = 'May 05 2016 06:00:00 GMT+0200';
-                        // need to get the time when user needs to leave and create date object
-                        // console.log(endTime);
-                        var clock = document.getElementById('countdownClockView');
+                        var days = Math.floor(countdownToLeave / _day);
+                        var hours = Math.floor((countdownToLeave % _day ) / _hour);
+                        var minutes = Math.floor((countdownToLeave % _hour) / _minute);
+                        var seconds = Math.floor((countdownToLeave % _minute) / _second);
+                        var milliseconds = Math.floor((countdownToLeave % _second));
 
-                        function updateClock() {
-                            // call get time remaining for the user to leave
-                            var time = buildCountdownTicker.getRemainingTime(endTime);
-
-                            clock.innerHTML = 'days: ' + time.days + '<br>' +
-                                'hours: ' + time.hours + '<br>' +
-                                'minutes: ' + time.minutes + '</br>' +
-                                'seconds: ' + time.seconds + '</br>';
-
-                            // stop the counter when time is up
-                            if (time.total <= 0) {
-                                clearInterval(timeInterval);
-                            }
-                        } // end updateClock()
-
-                        // Start the clock up
-                        updateClock();
-                        var timeInterval = setInterval(updateClock, 1000);
-
-                        // Date.setHours(hour,min,sec,millisec)
-                        // var setDate = new Date.setHours();
-
-                    } // end initializeClock
+                        document.getElementById('countdownClockView').innerHTML = 'Days: ' + days + '<br />';
+                        document.getElementById('countdownClockView').innerHTML += 'Hours: ' + hours+ '<br />';
+                        document.getElementById('countdownClockView').innerHTML += 'Minutes: ' + minutes+ '<br />';
+                        document.getElementById('countdownClockView').innerHTML += 'Seconds: ' + seconds+ '<br />';
+                        document.getElementById('countdownClockView').innerHTML += 'Milliseconds: ' + milliseconds+ '<br />';
+                    }
                 };
                 console.log(response);
                 // var deadline = new(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-                buildCountdownTicker.initializeClock(1464742107000);
+                // console.log('Desired Arrival Time - duration');
+                var desiredArrivalTime = locations[0].arrivalTransit.stringArrivalLocation;
+                console.log(desiredArrivalTime + ' Before Split');
+                var time = desiredArrivalTime.split(":");
+                var date = new Date();
+                var desiredArrivalTimeInMilliseconds = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), time[0], time[1], date.getUTCSeconds()).getTime();
+                // console.log(desiredArrivalTimeInMilliseconds + ' desiredArrivalTimeInMilliseconds');
+                var duration = 6000;
+                var timeToLeave = Number(desiredArrivalTimeInMilliseconds - duration);
+                // console.log(timeToLeave + ' Time to Leave outside Timer function');
+                timer = setInterval(function() {
+                    buildTimer.initializeClock(timeToLeave);
+                }, 1);
+
             }, // end success
             error: function(error) {
                 console.log('error');
@@ -203,4 +183,107 @@ $(function() {
         // if ()
         getInputValues(locations);
     }); // end submit button click
+
+    $('.testingClock').on('click', function() {
+        var end = new Date('16 Jul 2016 13:29:00'); // set expiry date and time..
+
+        var _second = 1000;
+        var _minute = _second * 60;
+        var _hour = _minute * 60;
+        var _day = _hour *24;
+        var timer;
+
+        function showRemaining()
+        {
+            console.log(Date.now() + ' Now');
+            // 1465192967135
+            var distance = 1465195800000 - Date.now();
+            if (distance < 0) {
+                // handle expiry here..
+                clearInterval(timer); // stop the timer from continuing ..
+                alert('Expired'); // alert a message that the timer has expired..
+
+                return; // break out of the function so that we do not update the counters with negative values..
+            }
+            var days = Math.floor(distance / _day);
+            var hours = Math.floor( (distance % _day ) / _hour );
+            var minutes = Math.floor( (distance % _hour) / _minute );
+            var seconds = Math.floor( (distance % _minute) / _second );
+            var milliseconds = Math.floor( (distance % _second) );
+
+            document.getElementById('countdownClockView').innerHTML = 'Days: ' + days + '<br />';
+            document.getElementById('countdownClockView').innerHTML += 'Hours: ' + hours+ '<br />';
+            document.getElementById('countdownClockView').innerHTML += 'Minutes: ' + minutes+ '<br />';
+            document.getElementById('countdownClockView').innerHTML += 'Seconds: ' + seconds+ '<br />';
+            document.getElementById('countdownClockView').innerHTML += 'Milliseconds: ' + milliseconds+ '<br />';
+        }
+
+        timer = setInterval(showRemaining, 1);
+
+    });
+    var buildCountdownTicker = {
+        getRemainingTime: function(timeToLeave) {
+            console.log('Time to Leave ' + timeToLeave);
+            // var endTime = '2016-31-5T06:00';
+            // var endTime = Number(1464701422815 + 111422815);
+            // deadline = 1464742107000;
+            // var endTime = new Date();
+            // var endTimeMilliseconds = endTime.setTime(timeToLeave);
+            // console.log('endTime');
+            // console.log(endTimeMilliseconds);
+            // var testingDate = Date.parse(endTime);
+            // var testingDate = new Date();
+            var now = new Date();
+            var currentTime = now.getMilliseconds();
+            console.log('Current Time');
+            console.log(currentTime);
+
+            var counterForTimeToLeave = timeToLeave - currentTime;
+            console.log('counterForTimeToLeave');
+            console.log(counterForTimeToLeave);
+            // var newDate = new Date(endTime);
+            // var time = Date.parse(timeToLeave) - Date.parse(currentTime);
+            var time = counterForTimeToLeave;
+            var seconds = Math.floor((time / 1000) % 60);
+            var minutes = Math.floor((time / 1000 / 60) % 60);
+            var hours = Math.floor((time / 1000 * 60 * 60) % 24);
+            var days = Math.floor((time / 1000 * 60 * 60 * 24) % 24);
+
+            console.log('Seconds: ' + seconds);
+            return {
+                'total': time,
+                'seconds': seconds,
+                'minutes': minutes,
+                'hours': hours,
+                'days': days
+            }
+        }, // getRemainingTime()
+        initializeClock: function(timeToLeave) {
+            // endTime will be an object from response
+            // var endTime = 'May 05 2016 06:00:00 GMT+0200';
+            // need to get the time when user needs to leave and create date object
+            // console.log(endTime);
+            var clock = document.getElementById('countdownClockView');
+
+            function updateClock() {
+                // call get time remaining for the user to leave
+                var time = buildCountdownTicker.getRemainingTime(timeToLeave);
+
+                clock.innerHTML = 'days: ' + time.days + '<br>' +
+                    'hours: ' + time.hours + '<br>' +
+                    'minutes: ' + time.minutes + '</br>' +
+                    'seconds: ' + time.seconds + '</br>';
+
+                // stop the counter when time is up
+                if (time.total <= 0) {
+                    clearInterval(timeInterval);
+                }
+            } // end updateClock()
+
+            // Start the clock up
+            updateClock();
+            var timeInterval = setInterval(updateClock, 1000);
+
+        } // end initializeClock
+    }; // end buildCountdownTicker
 }); // end ready
