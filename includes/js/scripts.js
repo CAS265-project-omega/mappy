@@ -81,7 +81,7 @@ $(function() {
         var timer;
 
         $.ajax({
-            url: 'includes/php/testAJAX.php',
+            url: 'includes/php/mapi.php',
             method: 'POST',
             data: { locationsObject: locations[0] },
             dataType: 'json',
@@ -169,6 +169,7 @@ $(function() {
             inputErrorsDiv.html('<h3>Please select a mode of transportation.</h3>');
 
         } else {
+            inputErrorsDiv.html('<h3></h3>');
             // Not mobile device
             if ($.isEmptyObject(locations[0].origin)) {
                 // add values to locations object for serialized
