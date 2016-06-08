@@ -14,39 +14,37 @@
     <link rel="stylesheet" href="includes/css/style.css">
 </head>
 <body>
-    <!--<header>-->
-        <!--<h1>Gots to Go!</h1>-->
-    <!--</header>-->
+    <header>
+       <h1>Gots to Go!</h1>
+    </header>
     <section>
         <main>
-            <article>
-                <form action="post">
-                    <label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting point: </label>
-                    <input id="origin" type="text" name="origin" class="txtinput">
+             <form action="post">
+                <button id="useMyGeoLocation">Use my location</button>
+                 
+                <label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting point: </label>
+                <input id="origin" type="text" name="origin" class="txtinput">
 
-                    <label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting State: </label>
-                    <input id="originState" type="text" name="originState" class="txtinput">
+                <label><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Starting State: </label>
+                <input id="originState" type="text" name="originState" class="txtinput">
 
-                    <button id="useMyGeoLocation">Use my location</button>
+                <label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination point:</label>
+                <input id="destination" type="text" name="destination" class="txtinput">
 
-                    <label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination point:</label>
-                    <input id="destination" type="text" name="destination" class="txtinput">
-
-                    <label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination State:</label>
-                    <input id="destinationState" type="text" name="destinationState" class="txtinput">
+                <label><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Destination State:</label>
+                <input id="destinationState" type="text" name="destinationState" class="txtinput">
 
 
-                    <label><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Desired arrival time: </label>
-                    <input id="arrival" type="time" name="arrival" class="txtinput">
+                <label><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Desired arrival time: </label>
+                <input id="arrival" type="time" name="arrival" class="txtinput">
 
-                    <select  id="transit" name="dropdown" style="font-family:'FontAwesome', Areal;">
-                        <option>Transit selection</option>
-                        <option>&#xf1b9; &nbsp;Car</option>
-                        <option>&#xf207; &nbsp;Bus</option>
-                    </select>
-                    <input type="submit" value="Submit" id="submit">
-                </form>
-            </article>
+                <select  id="transit" name="dropdown" style="font-family:'FontAwesome', Areal;">
+                    <option>Transit selection</option>
+                    <option>&#xf1b9; &nbsp;Car</option>
+                    <option>&#xf207; &nbsp;Bus</option>
+                </select>
+                <input type="submit" value="Submit" id="submit">
+            </form>
             <!-- Timer countdown -->
             <div id="countdownClockView">
                 <h2>Time to Leave Counter</h2>
@@ -58,10 +56,10 @@
         </main>
     </section>
 
-    <!--<footer>-->
-        <!--<p> Mel rebum dolorem ad, ex magna regione his. Sit enim omittam definitionem ea, sumo novum tincidunt id eos. Convenire scribentur ius id, qui eu magna explicari. Ut ancillae albucius ius, no iisque debitis evertitur nec. Ei elaboraret dissentiunt duo, omnis.</p>-->
+    <footer>
+        <p> Mel rebum dolorem ad, ex magna regione his. Sit enim omittam definitionem ea, sumo novum tincidunt id eos. Convenire scribentur ius id, qui eu magna explicari. Ut ancillae albucius ius, no iisque debitis evertitur nec. Ei elaboraret dissentiunt duo, omnis.</p>
     <!---->
-    <!--</footer>-->
+    </footer>
     <script src="includes/lib/jquery/jquery.min.js"></script>
     <script src="includes/js/scripts.js"></script>
 </body>

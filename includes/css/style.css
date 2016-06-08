@@ -13,19 +13,18 @@ font-family: 'Source Sans Pro', sans-serif;
 
 */
 
-header, main, footer {
+header, footer {
     padding: 1em;
 }
 
 /* header height is temporary until content is added */
 header {
-    height: 100px;
     background-color: #74AFAD;
 }
 
 main {
-    height: 300px;
     background-color: #ECECEA;
+    padding: .5em;
 }
 
 footer {
@@ -43,9 +42,39 @@ h1 {
     border-radius: 25px;
 }
 
+h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 2em;
+    text-align: center;
+    color: #558C89;
+}
+
 p {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+#countdownClockView {
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dedede;
+    clear: both;
+    margin: 1em;
+}
+
+#formValidationErrors {
+    color: #D9853B;
+    background-color: #ECECEA;
+    width: 50%;
+    font-size: 1.75em;
+}
+
+button#useMyGeoLocation {
+    background-color: #D9853B;
+    width: 100%;
+    margin-bottom: .75em;
+}
+
 /*---------------------------------*/
 /*color pallete
 #558C89
@@ -54,14 +83,13 @@ p {
 #ECECEA*/
 
 form {
-    width: 80%;
-    height: 13em;
+    
     padding: 1em .5em;
-    margin: 3em auto;
+    margin: 0 auto;
     background-color:#ECECEA;
     font-size: 2em;
     font-family: "Helvetica Neue", Arial, sans-serif;
-
+    overflow:hidden
 }
 
 input,
@@ -71,22 +99,24 @@ select {
     padding: .3em;
     font-size: .9em;
 }
-label{
+
+label {
     display: inline-block;
     float: left;
     clear:left;
-    width: 33%;
+    width: 100%;
     text-align: left;
-    margin: .5em 0 0 .4em;
+    margin: .5em 0 .25em .4em;
+    font-size: .7em;
 }
 
 .txtinput {
     display: block;
-    float: right;
+    float: left;
     border-style: solid;
     border-width: 1px;
     border-color: #dedede;
-    width: 46%;
+    width: 100%;
     color: #777;
     margin-bottom: .5em;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -102,23 +132,66 @@ label{
     outline: 0 none;
 }
 
-select{
+select {
     margin: 1em;
     float:left;
     clear: both;
 }
-button{
+button {
     background-color: #74AFAD;
     padding: .6em 0;    font-size: .6em;
     float: left;
     width: 15%;
 }
-#submit{
+#submit {
     background-color: #D9853B;
-    width: 38%;
     font-size: .5em;
     padding: .8em;
     float:left;
     clear: both;
+    width: 100%;
 
+}
+
+/* Media query for larger screen sizes */
+
+@media screen and (min-width: 1023px) {
+    main {
+      width: 50%;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: ;
+    }
+    
+    #countdownClockView{
+        width: 40%;
+        margin: auto;
+    }
+    
+    form {
+        width: 80%;
+    }
+    
+    #submit {
+        width: 38%;
+    }
+    
+    button#useMyGeoLocation {
+        width: 38%;
+    }
+    
+    .txtinput {
+        width: 46%;
+    }
+    
+    label {
+        width: 33%;
+        margin-left: 2em;
+    }
+    
+    txtinput {
+        margin-left: 12em;
+    }
+    
 }
