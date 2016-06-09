@@ -17,9 +17,12 @@ header, footer {
     padding: 1em;
 }
 
-/* header height is temporary until content is added */
 header {
     background-color: #74AFAD;
+    background-image: url(../images/bus.jpeg);
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 11em;
 }
 
 main {
@@ -44,46 +47,58 @@ h1 {
 
 h2 {
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     color: #558C89;
+    background-color: #ECECEA;
 }
 
 p {
     font-family: 'Source Sans Pro', sans-serif;
+    padding: 1em;
+    text-align: center;
+    line-height: 1.25em;
+    font-size: 1.2em;
 }
 
-#countdownClockView {
+.timerContainer {
+    background-color: #558C89;
+    padding: 1em 0;
+    border-radius: 15px;
+}
+
+.timer {
     display: block;
     border-style: solid;
     border-width: 1px;
     border-color: #dedede;
     clear: both;
     margin: 1em;
-}
-
-#formValidationErrors {
-    color: #D9853B;
     background-color: #ECECEA;
-    width: 50%;
-    font-size: 1.75em;
+    text-align: center;
 }
 
-button#useMyGeoLocation {
-    background-color: #D9853B;
-    width: 100%;
-    margin-bottom: .75em;
+.hours,
+.minutes,
+.seconds {
+    font-size: 3em;
+}
+
+.errorMessage {
+    color: #D9853B;
+    background-color: #fff;
+    width: 90%;
+    font-size: 1.75em;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: .25em;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 /*---------------------------------*/
-/*color pallete
-#558C89
-#74AFAD
-#D9853B
-#ECECEA*/
 
-form {
-    
+form { 
     padding: 1em .5em;
     margin: 0 auto;
     background-color:#ECECEA;
@@ -93,7 +108,6 @@ form {
 }
 
 input,
-button,
 select {
     background-color: #74AFAD;
     padding: .3em;
@@ -108,6 +122,10 @@ label {
     text-align: left;
     margin: .5em 0 .25em .4em;
     font-size: .7em;
+}
+
+.formrow {
+    clear: both;
 }
 
 .txtinput {
@@ -133,16 +151,19 @@ label {
 }
 
 select {
-    margin: 1em;
-    float:left;
-    clear: both;
+    margin: 1em 0;
 }
+
 button {
-    background-color: #74AFAD;
-    padding: .6em 0;    font-size: .6em;
-    float: left;
-    width: 15%;
+    background-color: #D9853B;
+    padding: .6em 0;    
+    font-size: .6em;
+    width: 75%;
+    margin: 0 auto .75em auto;
+    display: block;
+    border-radius: 25px;
 }
+
 #submit {
     background-color: #D9853B;
     font-size: .5em;
@@ -150,35 +171,75 @@ button {
     float:left;
     clear: both;
     width: 100%;
+    border-radius: 25px;
 
 }
 
-/* Media query for larger screen sizes */
+/* Media query for smartphone in landscape */
 
-@media screen and (min-width: 1023px) {
-    main {
-      width: 50%;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: ;
-    }
+@media screen and (min-width : 375px) {
     
-    #countdownClockView{
-        width: 40%;
-        margin: auto;
+    main {
+       width: 85%;
+       margin: 0 auto;
     }
     
     form {
-        width: 80%;
+        width: 100%;
+    }
+    
+    header {
+        padding-bottom: 10em;
+    }
+    
+    .errorMessage {
+        width: 90%;
+    }
+
+}
+
+
+/* Media query for tablet screen sizes */
+
+@media screen and (min-width: 768px) {
+    main {
+      width: 75%;
+    }
+    
+    header {
+        padding-bottom: 15em;
+    }
+    
+    h1 {
+      font-size: 3em;
+    }
+    
+    h2 {
+        font-size: 1.65em;
+    }
+    
+    form {
+        width: 100%;
+    }
+    
+    .timer {
+        width: 40%;
+        margin: 0 auto;
+    }
+    
+    select {
+        margin-left: 39.5%;
     }
     
     #submit {
         width: 38%;
+        margin-left: 37%;
     }
     
-    button#useMyGeoLocation {
-        width: 38%;
+    button {
+        width: 30%;
+        margin-bottom: 1.5em;
+        margin-left: 38.75%;
     }
     
     .txtinput {
@@ -194,4 +255,29 @@ button {
         margin-left: 12em;
     }
     
+    .errorMessage {
+        width: 50%;
+    }
+    
+}
+
+/* Media query for screen sizes larger than 1440px */
+
+@media screen and (min-width: 1325px) {
+    main {
+        width: 50%;
+    }
+    
+     header {
+        padding-bottom: 19em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+    
+    form {
+        width: 80%;
+    }
+
 }
