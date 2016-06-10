@@ -33,6 +33,7 @@ $(function() {
         // if the getLocation is successful
         mobileOriginLocation: function(currentLocation) {
             var originInput = $('#origin');
+            var originStateInput = $('#originState');
 
             // location is the object returned from the getCurrentPosition() function
             console.log('latitude ' + currentLocation.coords.latitude);
@@ -43,6 +44,8 @@ $(function() {
 
             // add reminder text to origin input
             originInput.attr('value', 'Current Location');
+            originStateInput.attr('value', 'Current State');
+
             // console.log(locations);
         }, // end originLocation()
         // errors switch if unsuccessful
@@ -69,8 +72,15 @@ $(function() {
     // if the user clicks on the useMyGeoLocation button
     var useMyGeoLocation = $('#useMyGeoLocation');
     useMyGeoLocation.on('click', function(evnt) {
+        var originInput = $('#origin');
+        var originStateInput = $('#originState');
+
         evnt.preventDefault();
         geoLocationFunctions.getMobileLocation();
+
+        // add reminder text to origin input
+        originInput.attr('value', 'Current Location');
+        originStateInput.attr('value', 'Current State');
     });
 
     var sendLocationsObject = function(locations) {
@@ -82,7 +92,7 @@ $(function() {
         var timer;
 
         $.ajax({
-            url: 'includes/php/mapi.php',
+            url: 'includes/php/testAJAX.php',
             method: 'POST',
             data: { locationsObject: locations[0] },
             dataType: 'json',
